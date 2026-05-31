@@ -163,6 +163,18 @@ Stub notes created from orphaned `[[links]]` (per *Inconsistency Handling*) carr
 - an HTML comment: `<!-- stub: created from orphaned link in [[source-note]] on YYYY-MM-DD -->`,
 - the type's scaffold when the type is clear from context (link source, naming convention).
 
+## Note Placement
+
+`notes/` is organised by **domain** (e.g. `artifacts/`, `characters/`, `language/`, `magic/`, `races/`, `world/`), and each note's `type:` frontmatter mirrors its parent directory. When creating a new note, place it in the domain that matches its **subject**, not the topical keyword in its content. A note *about* names is not automatically a language note — placement depends on what the note actually **is**.
+
+- **System notes** — the rules, vocabulary, mechanics of a domain — belong in the system's folder. The language folder holds grammar and dictionary; the magic folder holds the magic systems themselves.
+- **Derived assets** — material that *uses* a system but serves another purpose — belong in the folder whose domain they serve. A bank of names formed *via* the language is worldbuilding material → `notes/world/`. An artifact forged from a magic-bearing metal is artifacts material → `notes/artifacts/`, not `notes/magic/`.
+- When the destination is genuinely ambiguous, propose two or three candidate placements in the end-of-invocation prompt rather than guess.
+
+A test question to apply: *"If this note were renamed and the system reference stripped from its text, which domain would the remaining content belong to?"* That domain is its proper folder.
+
+If the writer later corrects a placement, treat the correction as canon for the placement principle going forward and move the file with `mv` (regular move; `git mv` only when the file is already tracked). Update the file's `type:` frontmatter to match the new directory, update the file title and aliases if the rename implies a renaming, and update any `[[link]]` references in `decision-log.md` or other organiser-maintained indices to point at the new basename.
+
 ## Open Questions
 
 `open-questions.md` aggregates open questions from each topic note's `## Open Questions` section, plus cross-cutting questions not anchored to a single topic. Format:
